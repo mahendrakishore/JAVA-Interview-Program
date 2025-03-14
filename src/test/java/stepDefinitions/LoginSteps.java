@@ -8,6 +8,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,9 +18,12 @@ import java.time.Duration;
 
 public class LoginSteps {
 
-    public static final WebDriver driver = DriverManager.getDriver();
+    public static  WebDriver driver ;
     @Given("I am on the Google search page")
     public void I_visit_google() {
+       // System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
         driver.get("https://www.google.com");
     }
 
